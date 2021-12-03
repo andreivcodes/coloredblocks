@@ -44,6 +44,14 @@ function App() {
 
   const mint_bundle = (_cids) => {};
 
+  const getTokensMinted = () => {
+    return 5;
+  };
+
+  const getMaxTokenSupply = () => {
+    return 100;
+  };
+
   const blockCard = (_name, _description, _image, _cid) => {
     return (
       <Card style={{ width: "18rem" }} className="Card m-3">
@@ -52,7 +60,7 @@ function App() {
           <Card.Title>{_name}</Card.Title>
           <Card.Text>{_description}</Card.Text>
           <Button variant="primary" onClick={mint_single(_cid)}>
-            Mint
+            Mint {getTokensMinted() + "/" + getMaxTokenSupply()}
           </Button>
         </Card.Body>
       </Card>
@@ -75,7 +83,7 @@ function App() {
               "QmUnAKqMScoAa3vXyvsjo4ne9X5S4EathzJnaggKPfAKgT",
             ])}
           >
-            Mint
+            Mint {getTokensMinted() + 4 + "/" + getMaxTokenSupply()}
           </Button>
         </Card.Body>
       </Card>
@@ -87,7 +95,15 @@ function App() {
       <header className="App-header">
         <div className="mt-5" />
         <p>Welcome to ColoredBlocks.</p>
-        <div>{currentAccount ? <div></div> : connectWalletButton()}</div>
+        <div>
+          {currentAccount ? (
+            <div>
+              <h5>Connected account: {currentAccount}</h5>
+            </div>
+          ) : (
+            connectWalletButton()
+          )}
+        </div>
         <div className="mt-5" />
         <Container fluid className="Container">
           <Row className="justify-content-md-center">
