@@ -5,6 +5,7 @@ html {
 .App {
   background-color: #282c34;
   text-align: center;
+  color: white;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,9 +15,9 @@ html {
 }
 
 .App-header {
-  min-height: 175vh;
+  min-height: 15vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(15px + 2vmin);

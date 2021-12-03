@@ -8,6 +8,7 @@ import block1image from "./assets/1.png";
 import block2image from "./assets/2.png";
 import block3image from "./assets/3.png";
 import block4image from "./assets/4.png";
+import RainbowText from "react-rainbow-text";
 import { useState } from "react";
 import "./App.css";
 
@@ -93,65 +94,69 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="mt-5" />
-        <p>Welcome to ColoredBlocks.</p>
-        <div>
-          {currentAccount ? (
-            <div>
-              <h5>Connected account: {currentAccount}</h5>
-            </div>
-          ) : (
-            connectWalletButton()
-          )}
-        </div>
-        <div className="mt-5" />
-        <Container fluid className="Container">
-          <Row className="justify-content-md-center">
-            <Col className="col-md-auto">
-              {blockCard(
-                "Blue block",
-                "This block feels blue",
-                block1image,
-                "QmS3PSjpZiCNAQyymGN3rqKt2Rx39F6YuKiTKu6BodZ8UD"
-              )}
-            </Col>
-            <Col className="col-md-auto">
-              {blockCard(
-                "Orangey block",
-                "Kinda orange. Kinda Red.",
-                block2image,
-                "QmQerLcGoB98xZ3iLkyTqbLbbYtRhch9jCaFoyaeKW8J3C"
-              )}
-            </Col>
-          </Row>
-          <Row className="justify-content-md-center">
-            <Col className="col-md-auto">
-              {blockCard(
-                "Fresh block",
-                "This block smells like mint",
-                block3image,
-                "QmXaHQZ1tQYs9chyRe9MXBoh33LC8C2usVT8Uwq56ET9Nz"
-              )}
-            </Col>
-            <Col className="col-md-auto">
-              {blockCard(
-                "Yelo block",
-                "YOOO THIS IS YELLOOO",
-                block4image,
-                "Qmd4rhDW6gMNdpWfCYWkmcGVSJV3Kr8PzMexuLJA6bTSzy"
-              )}
-            </Col>
-          </Row>
-
-          <Row className="justify-content-md-center">
-            {bundleCard(
-              "Special bundle",
-              "All blocks kinda rocks",
-              allbocksimage
-            )}
-          </Row>
-        </Container>
+        <div />
+        Welcome to&nbsp;
+        <RainbowText lightness={0.75} saturation={0.5}>
+          ColoredBlocks
+        </RainbowText>
+        .
       </header>
+      <div>
+        {currentAccount ? (
+          <div>
+            <h5>Connected account: {currentAccount}</h5>
+          </div>
+        ) : (
+          connectWalletButton()
+        )}
+      </div>
+      <div className="mt-5" />
+      <Container fluid className="Container">
+        <Row className="justify-content-md-center">
+          <Col className="col-md-auto">
+            {blockCard(
+              "Blue block",
+              "This block feels blue",
+              block1image,
+              "QmS3PSjpZiCNAQyymGN3rqKt2Rx39F6YuKiTKu6BodZ8UD"
+            )}
+          </Col>
+          <Col className="col-md-auto">
+            {blockCard(
+              "Orangey block",
+              "Kinda orange. Kinda Red.",
+              block2image,
+              "QmQerLcGoB98xZ3iLkyTqbLbbYtRhch9jCaFoyaeKW8J3C"
+            )}
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Col className="col-md-auto">
+            {blockCard(
+              "Fresh block",
+              "This block smells like mint",
+              block3image,
+              "QmXaHQZ1tQYs9chyRe9MXBoh33LC8C2usVT8Uwq56ET9Nz"
+            )}
+          </Col>
+          <Col className="col-md-auto">
+            {blockCard(
+              "Yelo block",
+              "YOOO THIS IS YELLOOO",
+              block4image,
+              "Qmd4rhDW6gMNdpWfCYWkmcGVSJV3Kr8PzMexuLJA6bTSzy"
+            )}
+          </Col>
+        </Row>
+
+        <Row className="justify-content-md-center">
+          {bundleCard(
+            "Special bundle",
+            "All blocks kinda rocks",
+            allbocksimage
+          )}
+        </Row>
+      </Container>
     </div>
   );
 }
