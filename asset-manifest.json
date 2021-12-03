@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/coloredblocks/static/css/main.a617e044.chunk.css",
+    "main.js": "/coloredblocks/static/js/main.14764670.chunk.js",
+    "main.js.map": "/coloredblocks/static/js/main.14764670.chunk.js.map",
+    "runtime-main.js": "/coloredblocks/static/js/runtime-main.7b1b4fab.js",
+    "runtime-main.js.map": "/coloredblocks/static/js/runtime-main.7b1b4fab.js.map",
+    "static/js/2.3b6f93fd.chunk.js": "/coloredblocks/static/js/2.3b6f93fd.chunk.js",
+    "static/js/2.3b6f93fd.chunk.js.map": "/coloredblocks/static/js/2.3b6f93fd.chunk.js.map",
+    "static/js/3.dcf9a7e9.chunk.js": "/coloredblocks/static/js/3.dcf9a7e9.chunk.js",
+    "static/js/3.dcf9a7e9.chunk.js.map": "/coloredblocks/static/js/3.dcf9a7e9.chunk.js.map",
+    "index.html": "/coloredblocks/index.html",
+    "static/css/main.a617e044.chunk.css.map": "/coloredblocks/static/css/main.a617e044.chunk.css.map",
+    "static/js/2.3b6f93fd.chunk.js.LICENSE.txt": "/coloredblocks/static/js/2.3b6f93fd.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/coloredblocks/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7b1b4fab.js",
+    "static/js/2.3b6f93fd.chunk.js",
+    "static/css/main.a617e044.chunk.css",
+    "static/js/main.14764670.chunk.js"
+  ]
+}
