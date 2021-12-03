@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/coloredblocks/static/css/main.a617e044.chunk.css",
-    "main.js": "/coloredblocks/static/js/main.14764670.chunk.js",
-    "main.js.map": "/coloredblocks/static/js/main.14764670.chunk.js.map",
-    "runtime-main.js": "/coloredblocks/static/js/runtime-main.7b1b4fab.js",
-    "runtime-main.js.map": "/coloredblocks/static/js/runtime-main.7b1b4fab.js.map",
-    "static/js/2.3b6f93fd.chunk.js": "/coloredblocks/static/js/2.3b6f93fd.chunk.js",
-    "static/js/2.3b6f93fd.chunk.js.map": "/coloredblocks/static/js/2.3b6f93fd.chunk.js.map",
-    "static/js/3.dcf9a7e9.chunk.js": "/coloredblocks/static/js/3.dcf9a7e9.chunk.js",
-    "static/js/3.dcf9a7e9.chunk.js.map": "/coloredblocks/static/js/3.dcf9a7e9.chunk.js.map",
+    "main.css": "/coloredblocks/static/css/main.21e616c7.chunk.css",
+    "main.js": "/coloredblocks/static/js/main.c8569fa6.chunk.js",
+    "main.js.map": "/coloredblocks/static/js/main.c8569fa6.chunk.js.map",
+    "runtime-main.js": "/coloredblocks/static/js/runtime-main.cd2a75cb.js",
+    "runtime-main.js.map": "/coloredblocks/static/js/runtime-main.cd2a75cb.js.map",
+    "static/css/2.0a9ec390.chunk.css": "/coloredblocks/static/css/2.0a9ec390.chunk.css",
+    "static/js/2.4c25e5ed.chunk.js": "/coloredblocks/static/js/2.4c25e5ed.chunk.js",
+    "static/js/2.4c25e5ed.chunk.js.map": "/coloredblocks/static/js/2.4c25e5ed.chunk.js.map",
     "index.html": "/coloredblocks/index.html",
-    "static/css/main.a617e044.chunk.css.map": "/coloredblocks/static/css/main.a617e044.chunk.css.map",
-    "static/js/2.3b6f93fd.chunk.js.LICENSE.txt": "/coloredblocks/static/js/2.3b6f93fd.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/coloredblocks/static/media/logo.6ce24c58.svg"
+    "static/css/2.0a9ec390.chunk.css.map": "/coloredblocks/static/css/2.0a9ec390.chunk.css.map",
+    "static/css/main.21e616c7.chunk.css.map": "/coloredblocks/static/css/main.21e616c7.chunk.css.map",
+    "static/js/2.4c25e5ed.chunk.js.LICENSE.txt": "/coloredblocks/static/js/2.4c25e5ed.chunk.js.LICENSE.txt",
+    "static/media/all blocks.dd80949b.png": "/coloredblocks/static/media/all blocks.dd80949b.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.7b1b4fab.js",
-    "static/js/2.3b6f93fd.chunk.js",
-    "static/css/main.a617e044.chunk.css",
-    "static/js/main.14764670.chunk.js"
+    "static/js/runtime-main.cd2a75cb.js",
+    "static/css/2.0a9ec390.chunk.css",
+    "static/js/2.4c25e5ed.chunk.js",
+    "static/css/main.21e616c7.chunk.css",
+    "static/js/main.c8569fa6.chunk.js"
   ]
 }
