@@ -13,7 +13,6 @@ function App() {
       <header className="App-header">
         <div className="mt-5" />
         <p>Welcome to ColoredBlocks.</p>
-
         <Container fluid className="Container">
           <Row className="justify-content-md-center">
             <Col className="col-md-auto">
