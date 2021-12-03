@@ -1,4 +1,9 @@
+html {
+  background-color: #282c34;
+}
+
 .App {
+  background-color: #282c34;
   text-align: center;
 }
 
@@ -9,18 +14,22 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  min-height: 175vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(15px + 2vmin);
   color: white;
+}
+
+.card-img-top {
+  object-fit: scale-down;
 }
 
 .Card {
   background-color: white;
   color: rgb(90, 90, 90);
+  font-size: calc(10px + 5vmin);
   font-size: 20px;
 }
