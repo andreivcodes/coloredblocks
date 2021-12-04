@@ -16,7 +16,7 @@ import { ethers } from "ethers";
 import "./App.css";
 
 const contractInfo = {
-  abi: metadataFile,
+  abi: metadataFile.abi,
   address: "0xbd5E0Db15Dc49F9616605cE543E456a447e40a9e",
 };
 
