@@ -28,12 +28,51 @@ const contract = new ethers.Contract(
 );
 
 function App() {
+  provider.on("network", (newNetwork, oldNetwork) => {
+    if (oldNetwork) {
+      window.location.reload();
+    }
+  });
   const [currentAccount, setCurrentAccount] = useState(null);
 
   const [currentTokensMinted, setCurrentTokensMinted] = useState(null);
   const [currentTokensSupply, setCurrentTokensSupply] = useState(null);
 
+  const switchNetworkMumbai = async () => {
+    try {
+      await window.ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: "0x13881" }],
+      });
+    } catch (error) {
+      if (error.code === 4902) {
+        try {
+          await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: [
+              {
+                chainId: "0x13881",
+                chainName: "Mumbai",
+                rpcUrls: ["https://rpc-mumbai.maticvigil.com"],
+                nativeCurrency: {
+                  name: "Matic",
+                  symbol: "Matic",
+                  decimals: 18,
+                },
+                blockExplorerUrls: ["https://explorer-mumbai.maticvigil.com"],
+              },
+            ],
+          });
+        } catch (error) {
+          alert(error.message);
+        }
+      }
+    }
+  };
+
   const connectWalletHandler = async () => {
+    await switchNetworkMumbai();
+    await switchNetworkMumbai();
     try {
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
@@ -42,11 +81,7 @@ function App() {
       setCurrentAccount(accounts[0]);
       setCurrentTokensMinted(await getTokensMinted());
       setCurrentTokensSupply(await getTokensSupply());
-    } catch (error) {
-      console.log("error");
-      console.error(error);
-      alert("Login to Metamask first");
-    }
+    } catch (error) {}
   };
 
   const mint_single = async (_cid) => {
