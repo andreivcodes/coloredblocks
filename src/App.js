@@ -205,7 +205,7 @@ function App() {
             <h4>
               You can view your NFTs on{" "}
               <a href={"https://testnets.opensea.io/" + currentAccount}>
-                Opensea Testnet
+                OpenSea Testnet
               </a>
             </h4>
           </div>
