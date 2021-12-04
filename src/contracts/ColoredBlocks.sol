@@ -96,8 +96,8 @@ contract ColoredBlocks is ERC721URIStorage, Ownable {
         mintPrice = newPrice;
     }
 
-    function setMaxTokenSupply(uint256 maxDragonSupply) public onlyOwner {
-        maxTokenSupply = maxDragonSupply;
+    function setMaxTokenSupply(uint256 newSupply) public onlyOwner {
+        maxTokenSupply = newSupply;
     }
 
     function _baseURI() internal view virtual override returns (string memory) {
