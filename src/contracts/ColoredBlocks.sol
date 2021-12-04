@@ -30,12 +30,12 @@ contract ColoredBlocks is ERC721URIStorage, Ownable {
 
         _shares[0] = 3333;
         _shares[1] = 3333;
-        _shares[2] = 3333;
+        _shares[2] = 3334;
 
         maxTokenSupply = 10;
-        mintPrice = 1 ether;
+        mintPrice = 0.01 ether;
 
-        baseURI = "https://ipfs.io/ipfs/";
+        baseURI = "ipfs://";
     }
 
     function withdraw(uint256 amount) public onlyOwner {

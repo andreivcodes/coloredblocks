@@ -10,27 +10,75 @@ import block3image from "./assets/3.png";
 import block4image from "./assets/4.png";
 import RainbowText from "react-rainbow-text";
 import { useState } from "react";
+import metadataFile from "./contracts/ColoredBlocks_flat.json";
+import { ethers } from "ethers";
+
 import "./App.css";
+
+const contractInfo = {
+  abi: metadataFile,
+  address: "0x7eAcF891c53de2Fd78BcF7EE3437F5593697fa58",
+};
+
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+const contract = new ethers.Contract(
+  contractInfo.address,
+  contractInfo.abi,
+  provider
+);
 
 function App() {
   const [currentAccount, setCurrentAccount] = useState(null);
 
+  const [currentTokensMinted, setCurrentTokensMinted] = useState(null);
+  const [currentTokensSupply, setCurrentTokensSupply] = useState(null);
+
   const connectWalletHandler = async () => {
-    const { ethereum } = window;
-
-    if (!ethereum) {
-      alert("Please install Metamask!");
-    }
-
     try {
-      const accounts = await ethereum.request({
+      const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
-      console.log("Found an account! Address: ", accounts[0]);
+
       setCurrentAccount(accounts[0]);
-    } catch (err) {
-      console.log(err);
+      setCurrentTokensMinted(await getTokensMinted());
+      setCurrentTokensSupply(await getTokensSupply());
+    } catch (error) {
+      console.log("error");
+      console.error(error);
+      alert("Login to Metamask first");
     }
+  };
+
+  const mint_single = async (_cid) => {
+    const signerContract = contract.connect(provider.getSigner());
+
+    const options = {
+      value: ethers.utils.parseEther("0.01"),
+      gasPrice: ethers.utils.parseUnits("10", "gwei"),
+      gasLimit: 5000000,
+    };
+    await signerContract.mint_single(currentAccount, _cid, options);
+  };
+
+  const mint_bundle = async (_cids) => {
+    const signerContract = contract.connect(provider.getSigner());
+
+    const options = {
+      value: ethers.utils.parseEther("0.04"),
+      gasPrice: ethers.utils.parseUnits("10", "gwei"),
+      gasLimit: 5000000,
+    };
+    await signerContract.mint_bundle(currentAccount, _cids, options);
+  };
+
+  const getTokensMinted = async () => {
+    let tokensMinted = await contract.tokensMinted();
+    return tokensMinted;
+  };
+
+  const getTokensSupply = async () => {
+    let tokensMinted = await contract.maxTokenSupply();
+    return tokensMinted;
   };
 
   const connectWalletButton = () => {
@@ -41,18 +89,6 @@ function App() {
     );
   };
 
-  const mint_single = (_cid) => {};
-
-  const mint_bundle = (_cids) => {};
-
-  const getTokensMinted = () => {
-    return 5;
-  };
-
-  const getMaxTokenSupply = () => {
-    return 100;
-  };
-
   const blockCard = (_name, _description, _image, _cid) => {
     return (
       <Card style={{ width: "18rem" }} className="Card m-3">
@@ -60,9 +96,18 @@ function App() {
         <Card.Body>
           <Card.Title>{_name}</Card.Title>
           <Card.Text>{_description}</Card.Text>
-          <Button variant="primary" onClick={mint_single(_cid)}>
-            Mint {getTokensMinted() + "/" + getMaxTokenSupply()}
-          </Button>
+          {currentAccount ? (
+            <Button
+              variant="primary"
+              onClick={async () => {
+                await mint_single(_cid);
+              }}
+            >
+              Mint {currentTokensMinted + "/" + currentTokensSupply}
+            </Button>
+          ) : (
+            ""
+          )}
         </Card.Body>
       </Card>
     );
@@ -75,17 +120,23 @@ function App() {
         <Card.Body>
           <Card.Title>{_name}</Card.Title>
           <Card.Text>{_description}</Card.Text>
-          <Button
-            variant="primary"
-            onClick={mint_bundle([
-              "QmfPaUSE3MeGnGEXs5GJL6dWqTkb1adA4fcYJAY6xjCd24",
-              "QmTyTuQydutsEnDe9R8Wzksk4g7hzmBnAbinzMihVuMTWz",
-              "QmeF8W19JKQyokNF6SvQ5UpF8LT7PREEFp9iPHGJdkrJRw",
-              "QmUnAKqMScoAa3vXyvsjo4ne9X5S4EathzJnaggKPfAKgT",
-            ])}
-          >
-            Mint {getTokensMinted() + 4 + "/" + getMaxTokenSupply()}
-          </Button>
+          {currentAccount ? (
+            <Button
+              variant="primary"
+              onClick={async () => {
+                await mint_bundle([
+                  "QmfPaUSE3MeGnGEXs5GJL6dWqTkb1adA4fcYJAY6xjCd24",
+                  "QmTyTuQydutsEnDe9R8Wzksk4g7hzmBnAbinzMihVuMTWz",
+                  "QmeF8W19JKQyokNF6SvQ5UpF8LT7PREEFp9iPHGJdkrJRw",
+                  "QmUnAKqMScoAa3vXyvsjo4ne9X5S4EathzJnaggKPfAKgT",
+                ]);
+              }}
+            >
+              Mint {currentTokensMinted + "/" + currentTokensSupply}
+            </Button>
+          ) : (
+            ""
+          )}
         </Card.Body>
       </Card>
     );
@@ -94,16 +145,28 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div />
-        Welcome to&nbsp;
-        <RainbowText lightness={0.75} saturation={0.5}>
-          ColoredBlocks
-        </RainbowText>
-        .
+        <Container>
+          <Row>
+            <div>
+              Welcome to&nbsp;
+              <RainbowText lightness={0.75} saturation={0.5}>
+                ColoredBlocks
+              </RainbowText>
+            </div>
+          </Row>
+          <Row>
+            <div>
+              Contract address&nbsp;
+              <RainbowText lightness={0.75} saturation={0.5}>
+                {contract.address}
+              </RainbowText>
+            </div>
+          </Row>
+        </Container>
       </header>
       <div>
         {currentAccount ? (
-          <div>
+          <div className="mt-3 mb-3">
             <h5>Connected account: {currentAccount}</h5>
           </div>
         ) : (
@@ -118,7 +181,7 @@ function App() {
               "Blue block",
               "This block feels blue",
               block1image,
-              "QmS3PSjpZiCNAQyymGN3rqKt2Rx39F6YuKiTKu6BodZ8UD"
+              "QmfPaUSE3MeGnGEXs5GJL6dWqTkb1adA4fcYJAY6xjCd24"
             )}
           </Col>
           <Col className="col-md-auto">
@@ -126,7 +189,7 @@ function App() {
               "Orangey block",
               "Kinda orange. Kinda Red.",
               block2image,
-              "QmQerLcGoB98xZ3iLkyTqbLbbYtRhch9jCaFoyaeKW8J3C"
+              "QmTyTuQydutsEnDe9R8Wzksk4g7hzmBnAbinzMihVuMTWz"
             )}
           </Col>
         </Row>
@@ -136,7 +199,7 @@ function App() {
               "Fresh block",
               "This block smells like mint",
               block3image,
-              "QmXaHQZ1tQYs9chyRe9MXBoh33LC8C2usVT8Uwq56ET9Nz"
+              "QmeF8W19JKQyokNF6SvQ5UpF8LT7PREEFp9iPHGJdkrJRw"
             )}
           </Col>
           <Col className="col-md-auto">
@@ -144,7 +207,7 @@ function App() {
               "Yelo block",
               "YOOO THIS IS YELLOOO",
               block4image,
-              "Qmd4rhDW6gMNdpWfCYWkmcGVSJV3Kr8PzMexuLJA6bTSzy"
+              "QmUnAKqMScoAa3vXyvsjo4ne9X5S4EathzJnaggKPfAKgT"
             )}
           </Col>
         </Row>
