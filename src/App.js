@@ -182,27 +182,32 @@ function App() {
       <header className="App-header">
         <Container>
           <Row>
-            <div>
+            <h1>
               Welcome to&nbsp;
               <RainbowText lightness={0.75} saturation={0.5}>
                 ColoredBlocks
               </RainbowText>
-            </div>
+            </h1>
           </Row>
           <Row>
-            <div>
+            <h4>
               Contract address&nbsp;
               <RainbowText lightness={0.75} saturation={0.5}>
                 {contract.address}
               </RainbowText>
-            </div>
+            </h4>
           </Row>
         </Container>
       </header>
       <div>
         {currentAccount ? (
           <div className="mt-3 mb-3">
-            <h5>Connected account: {currentAccount}</h5>
+            <h4>
+              You can view your NFTs on{" "}
+              <a href={"https://testnets.opensea.io/" + currentAccount}>
+                Opensea Testnet
+              </a>
+            </h4>
           </div>
         ) : (
           connectWalletButton()
