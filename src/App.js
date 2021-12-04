@@ -17,7 +17,7 @@ import "./App.css";
 
 const contractInfo = {
   abi: metadataFile,
-  address: "0x7eAcF891c53de2Fd78BcF7EE3437F5593697fa58",
+  address: "0xbd5E0Db15Dc49F9616605cE543E456a447e40a9e",
 };
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);

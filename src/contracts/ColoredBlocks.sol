@@ -50,7 +50,7 @@ contract ColoredBlocks is ERC721URIStorage, Ownable {
         }
     }
 
-    function _mint(address recipient, string memory tokenURI) private {
+    function _localmint(address recipient, string memory tokenURI) private {
         _tokenIdsCounter.increment();
 
         uint256 newItemId = _tokenIdsCounter.current();
@@ -69,7 +69,7 @@ contract ColoredBlocks is ERC721URIStorage, Ownable {
         );
         require(msg.value >= mintPrice, "Not enough ETH sent; check price!");
 
-        _mint(recipient, tokenURI);
+        _localmint(recipient, tokenURI);
     }
 
     function mint_bundle(address recipient, string[4] memory tokenURIs)
@@ -86,10 +86,10 @@ contract ColoredBlocks is ERC721URIStorage, Ownable {
             "Not enough ETH sent; check price!"
         );
 
-        _mint(recipient, tokenURIs[0]);
-        _mint(recipient, tokenURIs[1]);
-        _mint(recipient, tokenURIs[2]);
-        _mint(recipient, tokenURIs[3]);
+        _localmint(recipient, tokenURIs[0]);
+        _localmint(recipient, tokenURIs[1]);
+        _localmint(recipient, tokenURIs[2]);
+        _localmint(recipient, tokenURIs[3]);
     }
 
     function setMintPrice(uint256 newPrice) public onlyOwner {
